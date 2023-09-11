@@ -1,0 +1,19 @@
+server {
+    listen {{ http_port }} default_server;
+    listen [::]:{{ http_port }};
+
+    server_name {{ http_host }};
+
+    access_log /var/log/nginx/snake_futurestud_io_access.log;
+    error_log  /var/log/nginx/snake_futurestud_io_error.log;
+
+    root /var/www/msi-front/dist;
+
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+}
+

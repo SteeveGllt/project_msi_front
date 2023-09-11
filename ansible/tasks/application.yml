@@ -1,0 +1,38 @@
+---
+
+- name: Delete Directory Front
+  ansible.builtin.file:
+    state: absent
+    path: /var/www/msi-front
+
+- name: Create Application Directory
+  ansible.builtin.file:
+    state: directory
+    path: /var/www/msi-front
+
+
+- name: Copy Application
+  copy:
+    src: ../../
+    dest: /var/www/msi-front/
+
+- name: Delete package-lock.json
+  ansible.builtin.file:
+    state: absent
+    path: /var/www/msi-front/package-lock.json
+
+- name: Sets env file front
+  template:
+    src: "files/.env.j2"
+    dest: "/var/www/msi-front/.env"
+
+- name: Yarn Install
+  ansible.builtin.shell: yarn
+  args:
+    chdir: /var/www/msi-front/
+
+
+- name: Build Frontend
+  ansible.builtin.shell: yarn build
+  args:
+    chdir: /var/www/msi-front/

@@ -1,0 +1,6 @@
+---
+- name: Install yarn with npm
+  community.general.npm:
+    name: yarn
+    global: true
+    state: present

@@ -1,0 +1,8 @@
+---
+app_url_back: "msiapi.groupemontroland.fr"
+app_url_front: "msi.groupemontroland.fr"
+http_host: "msi.groupemontroland.fr www.msi.groupemontroland.fr"
+http_conf: "msi.groupemontroland.fr.conf"
+http_port: "80"
+https_port: "443"
+node_version: "18"
